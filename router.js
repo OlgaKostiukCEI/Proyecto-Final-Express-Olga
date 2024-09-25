@@ -2,11 +2,13 @@ const express = require ('express')
 const { getGato, postGato, deleteGato, putGato } = require('./gatos.controller')
 const { getPerro, postPerro, deletePerro, putPerro } = require('./perros.controller')
 const { postUsuarios } = require('./users.controller')
+const { getHome } = require('./gethome.controller')
 
 
 const router =express.Router()
 
     router.route('/')
+        .get(getHome)
         
 
     router.route('/gatos')
