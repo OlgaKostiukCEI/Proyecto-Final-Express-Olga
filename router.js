@@ -6,6 +6,9 @@ const { postUsuarios } = require('./users.controller')
 
 const router =express.Router()
 
+    router.route('/')
+        
+
     router.route('/gatos')
         .get(getGato)
         .post(postGato)
