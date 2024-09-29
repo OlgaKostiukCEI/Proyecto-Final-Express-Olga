@@ -1,5 +1,5 @@
 const express = require ('express')
-const { getGato, postGato, deleteGato, putGato } = require('./gatos.controller')
+const { getGato, postGato, deleteGato, putGato, getGatoId } = require('./gatos.controller')
 const { getPerro, postPerro, deletePerro, putPerro } = require('./perros.controller')
 const { postUsuarios } = require('./users.controller')
 const { getHome } = require('./gethome.controller')
@@ -15,7 +15,9 @@ const router =express.Router()
         .get(getGato)
         .post(postGato)
         .put(putGato)
-  
+    
+    router.route('/gatos/id/:_id')
+        .get(getGatoId)    
     
     router.route('/gatos/id/:_id')
         .delete(deleteGato)

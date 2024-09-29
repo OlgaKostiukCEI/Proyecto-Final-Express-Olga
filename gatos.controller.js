@@ -9,6 +9,16 @@ const getGato = async(req,res,next)=>{
    }
 }
 
+const getGatoId = async (req, res, next)=>{
+   try{
+      const {_id}=req.params
+      const buscar = await Gatos.findOne({_id})
+      res.json(buscar)
+   }catch(error){
+      next({statusText : error.message})
+   }
+}
+
 const postGato = async(req,res,next)=>{
   try {
     const {imagen, nombre, raza, edad, genero, caracter, descripcion} =req.body
@@ -50,8 +60,10 @@ const deleteGato = async(req,res,next)=>{
 
 module.exports={
    getGato,
+   getGatoId,
    postGato,
    putGato,
    deleteGato,
+
  
 }
