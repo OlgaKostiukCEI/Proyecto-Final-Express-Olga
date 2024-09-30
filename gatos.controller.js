@@ -17,6 +17,7 @@ const getGatoId = async (req, res, next)=>{
    }catch(error){
       next({statusText : error.message})
    }
+   
 }
 
 const postGato = async(req,res,next)=>{
