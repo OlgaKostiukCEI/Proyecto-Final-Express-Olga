@@ -46,7 +46,7 @@ const putGato = async(req,res,next)=>{
 
 const putGatoId = async(req,res,next)=>{
    try {
-      const {_id,} = req.params
+      const {_id} = req.params
       const datos = req.body
       await Gatos.findByIdAndUpdate (_id, datos)    
       const buscar = await Gatos.find()

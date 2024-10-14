@@ -1,3 +1,4 @@
+const { putGatoId } = require("./gatos.controller")
 const { Perros } = require("./model")
 
 const getPerro = async(req,res,next)=>{
@@ -8,6 +9,18 @@ const getPerro = async(req,res,next)=>{
     next({statusText : error.message})
    }
 }
+
+const getPerroId = async(req,res,next)=>{
+   try{
+      const {_id}=req.params
+      const buscar = await Perros.findOne({_id})
+      res.json(buscar)
+   }catch(error){
+      next ({statusText : error.message})
+   }
+
+}
+
 
 const postPerro = async(req,res,next)=>{
    try {
@@ -33,6 +46,20 @@ const putPerro = async(req,res,next)=>{
    }
 }
 
+
+const putPerroId = async (req, res, next)=>{
+   try{
+      const {_id} =req.params
+      const datos = req.body
+      await Perros.findByIdAndUpdate (_id,datos)
+      const buscar = await Perros.find()
+      res.status(200).json(buscar)
+   } catch (error) {
+      next({statusText:error.message})
+   }
+}
+
+
 const deletePerro = async(req,res,next)=>{
 
     const {_id} = req.params
@@ -53,4 +80,6 @@ module.exports={
    putPerro,
    postPerro,
    deletePerro,
+   getPerroId,
+   putPerroId,
 }
